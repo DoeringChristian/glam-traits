@@ -1,7 +1,13 @@
-use crate::traits::{Dot, Length, Lerp, Normalize};
+use crate::{
+    prelude::Cross,
+    traits::{Dot, Length, Lerp, Normalize},
+};
 
 pub fn dot<Rhs, Lhs: Dot<Rhs>>(lhs: Lhs, rhs: Rhs) -> Lhs::Output {
     lhs.dot(rhs)
+}
+pub fn cross<Rhs, Lhs: Cross<Rhs>>(lhs: Lhs, rhs: Rhs) -> Lhs::Output {
+    lhs.cross(rhs)
 }
 
 pub fn length<T: Length>(src: T) -> T::Output {

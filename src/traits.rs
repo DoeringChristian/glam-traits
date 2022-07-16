@@ -20,6 +20,26 @@ impl_dot!(glam::Vec2, glam::Vec2 => f32);
 impl_dot!(glam::Vec3, glam::Vec3 => f32);
 impl_dot!(glam::Vec4, glam::Vec4 => f32);
 
+pub trait Cross<Rhs = Self> {
+    type Output;
+    fn cross(self, rhs: Rhs) -> Self::Output;
+}
+
+macro_rules! impl_cross {
+    ($lhs:ty, $rhs:ty => $out:ty) => {
+        impl Cross<$rhs> for $lhs {
+            type Output = $out;
+
+            #[inline]
+            fn cross(self, rhs: $rhs) -> Self::Output {
+                <$lhs>::cross(self, rhs)
+            }
+        }
+    };
+}
+
+impl_cross!(glam::Vec3, glam::Vec3 => glam::Vec3);
+
 pub trait Length {
     type Output;
     fn length_squared(self) -> Self::Output;
