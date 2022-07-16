@@ -1,19 +1,22 @@
+#[macro_export]
 macro_rules! vec2 {
     ($($e:expr),*) => {
         $crate::glam::Vec2::from(($($e),*))
     }
 }
+#[macro_export]
 macro_rules! vec3 {
     ($($e:expr),*) => {
         $crate::glam::Vec3::from(($($e),*))
     }
 }
+#[macro_export]
 macro_rules! vec4 {
     ($($e:expr),*) => {
         $crate::glam::Vec4::from(($($e),*))
     }
 }
-
+#[macro_export]
 macro_rules! quat{
     ($($e:expr),*) => {
         $crate::glam::Quat::from(($($e),*))
